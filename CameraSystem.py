@@ -15,16 +15,17 @@ if __name__ == '__main__':
     cam_system = CameraSystem()
 
     # Target time (Year, Month, Day, Hour, Minute, Second)
-    target_time = datetime(2026, 8, 27, 19, 24, 0)
-
-    while datetime.now() < target_time:
-        time_now = datetime.now().replace(second=0, microsecond=0)
-        print(time_now)
-        time.sleep(1)
+    # target_time = datetime(2026, 8, 27, 19, 24, 0)
+    #
+    # while datetime.now() < target_time:
+    #     time_now = datetime.now().replace(second=0, microsecond=0)
+    #     print(time_now)
+    #     time.sleep(1)
 
     try:
         while True:
-            cam_system.record(datetime.now(), duration=3600)
+            name = datetime.now().replace(second=0, microsecond=0).strftime("%Y-%m-%d_%H-%M-%S.mp4")
+            cam_system.record(name, duration=3600)
 
     except KeyboardInterrupt:
         print("Stopping camera system...")
